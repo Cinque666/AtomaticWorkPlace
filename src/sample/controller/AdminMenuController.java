@@ -6,15 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
-public class ErrorController {
+public class AdminMenuController {
 
     private static Stage stage;
 
@@ -22,25 +20,27 @@ public class ErrorController {
     private ResourceBundle resources;
 
     @FXML
-    private Button okButton;
-
-    @FXML
     private URL location;
 
     @FXML
-    private Text errorText;
+    private Button closeButton;
 
     @FXML
-    void initialize() {
-        okButton.setOnAction(event -> stage.close());
+    private Button addUserButton;
+
+    @FXML
+    private Button DeleteUserButton;
+
+    public void initialize(){
+        closeButton.setOnAction(event -> stage.close());
     }
 
-    static void start(Stage primaryStage) throws IOException {
+    public static void start(Stage primaryStage) throws IOException {
         stage = primaryStage;
-        Parent root = FXMLLoader.load(ErrorController.class.getResource("/errorWindow.fxml"));
+        Parent root = FXMLLoader.load(AdminMenuController.class.getResource("/adminMenuWindow.fxml"));
         Scene scene = new Scene(root);
-        primaryStage.setTitle("ERROR");
-        primaryStage.getIcons().add(new Image("/images/erroricon.png"));
+        primaryStage.setTitle("Admin menu");
+        primaryStage.getIcons().add(new Image("/images/icon.png"));
         primaryStage.setScene(scene);
         primaryStage.show();
     }

@@ -62,11 +62,10 @@ public class LoginWindowController {
     }
 
     private void loginUser(String loginText, String loginPassword) throws IOException {
-        DBHandler dbHandler = new DBHandler();
         User user = new User();
         user.setLogin(loginText);
         user.setPassword(loginPassword);
-        ResultSet resultSet = dbHandler.signInUser(user);
+        ResultSet resultSet = DBHandler.INSTANCE.signInUser(user);
 
         int counter = 0;
 

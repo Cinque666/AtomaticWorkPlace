@@ -14,12 +14,15 @@
                 <Font name="Times New Roman" size="38.0" />
             </font>
         </Label>
-        <Label layoutX="633.0" layoutY="5.0" prefHeight="18.0" prefWidth="66.0" text="version 0.0.1" textFill="#f5f5f5">
-            <font>
-                <Font name="Times New Roman" size="12.0" />
-            </font>
-        </Label>
-      <Hyperlink fx:id="exitHyperlink" layoutX="645.0" layoutY="25.0" text="Выйти" textFill="#d55656" underline="true" />
-      <Text fx:id="username" layoutX="593.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Hyperlink fx:id="exitHyperlink" layoutX="647.0" layoutY="30.0" text="Выйти" textFill="RED" underline="true">
+         <font>
+            <Font size="10.0" />
+         </font></Hyperlink>
+      <Text fx:id="username" fill="WHITE" layoutX="647.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="username1" fill="WHITE" layoutX="583.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:">
+         <font>
+            <Font name="Times New Roman" size="13.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>

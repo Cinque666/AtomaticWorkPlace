@@ -45,7 +45,11 @@ public class LoginWindowController {
             if(!loginText.equals("") && !loginPassword.equals("")){
                 loginUser(loginText, loginPassword);
             } else {
-                System.out.println("Invalid login or password.");
+                try {
+                    ErrorController.start(new Stage());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         } );
     }
@@ -67,9 +71,8 @@ public class LoginWindowController {
             e.printStackTrace();
         }
         if(counter >= 1){
-            WorkWindowController workWindowController = new WorkWindowController();
             try{
-                workWindowController.start(new Stage(), user.getLogin());
+                WorkWindowController.start(new Stage(), user.getLogin());
                 primaryStage.close();
             } catch(IOException e){
                 e.printStackTrace();
@@ -79,7 +82,6 @@ public class LoginWindowController {
 
     public static void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(LoginWindowController.class.getResource("/loginWindow.fxml"));
-        LoginWindowController controller;
         primaryStage.setTitle("АРМ");
         primaryStage.setScene(new Scene(root, 700, 400));
         primaryStage.getIcons().add(new Image("/images/icon.png"));

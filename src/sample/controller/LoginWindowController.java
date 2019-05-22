@@ -16,6 +16,9 @@ import javafx.stage.Stage;
 import sample.bean.User;
 import sample.connection.DBHandler;
 
+/**
+ * Entry Window
+ */
 public class LoginWindowController {
 
     @FXML

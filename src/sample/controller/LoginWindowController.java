@@ -46,7 +46,11 @@ public class LoginWindowController {
             String loginPassword = passwordField.getText().trim();
 
             if(!loginText.equals("") && !loginPassword.equals("")){
-                loginUser(loginText, loginPassword);
+                try {
+                    loginUser(loginText, loginPassword);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             } else {
                 try {
                     ErrorController.start(new Stage());
@@ -57,7 +61,7 @@ public class LoginWindowController {
         } );
     }
 
-    private void loginUser(String loginText, String loginPassword) {
+    private void loginUser(String loginText, String loginPassword) throws IOException {
         DBHandler dbHandler = new DBHandler();
         User user = new User();
         user.setLogin(loginText);
@@ -80,6 +84,8 @@ public class LoginWindowController {
             } catch(IOException e){
                 e.printStackTrace();
             }
+        } else{
+            ErrorController.start(new Stage());
         }
     }
 

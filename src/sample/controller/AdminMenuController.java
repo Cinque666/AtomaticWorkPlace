@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import sample.connection.DBHandler;
 
 import java.io.IOException;
 import java.net.URL;

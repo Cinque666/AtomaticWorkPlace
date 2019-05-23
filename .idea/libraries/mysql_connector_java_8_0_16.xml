@@ -2,6 +2,8 @@
   <library name="mysql-connector-java-8.0.16">
     <CLASSES>
       <root url="jar://$USER_HOME$/Downloads/mysql-connector-java-8.0.16/mysql-connector-java-8.0.16/mysql-connector-java-8.0.16.jar!/" />
+      <root url="jar://C:/xampp/tomcat/webapps/xmlparsing/WEB-INF/lib/log4j-api-2.11.2.jar!/" />
+      <root url="jar://C:/xampp/tomcat/webapps/xmlparsing/WEB-INF/lib/log4j-core-2.11.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

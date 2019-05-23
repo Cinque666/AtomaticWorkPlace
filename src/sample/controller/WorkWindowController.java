@@ -14,9 +14,13 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 import sample.connection.DBHandler;
 
 public class WorkWindowController {
+
+    private static final Logger LOGGER = (Logger) LogManager.getLogger(WorkWindowController.class);
 
     @FXML
     private Button adminMenuButton;
@@ -46,7 +50,7 @@ public class WorkWindowController {
                 LoginWindowController.start(new Stage());
                 stage.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                LOGGER.error("Hyperlink initialize error");
             }
         });
         username.setText(usernameHelper);
@@ -54,9 +58,11 @@ public class WorkWindowController {
             try {
                 if(DBHandler.INSTANCE.checkAdminRights(username.getText())){
                     openAdminMenu();
+                } else{
+                    RightsErrorController.start(new Stage());
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                LOGGER.error("adminMenuButton initialize Error");
             }
         });
     }

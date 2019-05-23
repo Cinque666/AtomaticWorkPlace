@@ -13,6 +13,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 import sample.bean.User;
 import sample.connection.DBHandler;
 
@@ -20,6 +22,8 @@ import sample.connection.DBHandler;
  * Entry Window
  */
 public class LoginWindowController {
+
+    private static final Logger LOGGER = (Logger) LogManager.getLogger(LoginWindowController.class);
 
     @FXML
     private ResourceBundle resources;
@@ -49,13 +53,13 @@ public class LoginWindowController {
                 try {
                     loginUser(loginText, loginPassword);
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    LOGGER.error("authorizationButton initialize Error");
                 }
             } else {
                 try {
                     ErrorController.start(new Stage());
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    LOGGER.error("authorization initialize Error");
                 }
             }
         } );
@@ -74,14 +78,14 @@ public class LoginWindowController {
                 counter++;
             }
         } catch(SQLException e){
-            e.printStackTrace();
+            LOGGER.error("loginUser method Error SQL Exception");
         }
         if(counter >= 1){
             try{
                 WorkWindowController.start(new Stage(), user.getLogin());
                 primaryStage.close();
             } catch(IOException e){
-                e.printStackTrace();
+                LOGGER.error("loginUser IOException");
             }
         } else{
             ErrorController.start(new Stage());

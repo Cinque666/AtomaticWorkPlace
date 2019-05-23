@@ -1,5 +1,7 @@
 package sample.connection;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 import sample.bean.User;
 
 import java.sql.Connection;
@@ -16,28 +18,30 @@ public class DBHandler extends Config{
 
     public static final DBHandler INSTANCE = new DBHandler();
 
+    private static final Logger LOGGER = (Logger) LogManager.getLogger(DBHandler.class);
     private Connection dbConnection;
     private static final int ADMIN_ROLE = 2;
     private static final String INSERT_INTO_USERS_TABLE = "INSERT INTO " + USER_TABLE + "("
             + USERS_NAME + ","
             + USERS_SURNAME + ","
             + USERS_LOGIN + ","
-            + USERS_PASSWORD + ")"
-            + "VALUES(?,?,?,?)";
+            + USERS_PASSWORD + ","
+            + USERS_ROLE + ")"
+            + "VALUES(?,?,?,?,?)";
     private static final String SELECT_FROM_USERS_TABLE = "SELECT * FROM " + USER_TABLE + " WHERE " + USERS_LOGIN
             + "=? AND " + USERS_PASSWORD + "=?";
     private static final String CHECK_ADMIN_RIGHTS_SELECT = "SELECT role FROM " + USER_TABLE + " WHERE " + USERS_LOGIN
             + "=?";
+    private final String CONNECTION = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName
+            + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
 
     private DBHandler(){
     }
 
     private Connection getDbConnection() throws ClassNotFoundException, SQLException{
-        String connection = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName
-                + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-        Class.forName("com.mysql.cj.jdbc.Driver");
-
-        dbConnection = DriverManager.getConnection(connection, dbUser, dbPassword);
+        Class.forName(JDBC_DRIVER);
+        dbConnection = DriverManager.getConnection(CONNECTION, dbUser, dbPassword);
         return dbConnection;
     }
 
@@ -53,7 +57,7 @@ public class DBHandler extends Config{
             preparedStatement.setString(4, password);
             preparedStatement.executeUpdate();
         } catch(ClassNotFoundException | SQLException e){
-            e.printStackTrace();
+            LOGGER.error("signUp method exception");
         }
     }
 
@@ -64,9 +68,10 @@ public class DBHandler extends Config{
             preparedStatement.setString(2, user.getSurname());
             preparedStatement.setString(3, user.getLogin());
             preparedStatement.setString(4, user.getPassword());
+            preparedStatement.setString(5, String.valueOf(user.getRole()));
             preparedStatement.executeUpdate();
         } catch(ClassNotFoundException | SQLException e){
-            e.printStackTrace();
+            LOGGER.error("signUp method exception");
         }
     }
 
@@ -79,7 +84,7 @@ public class DBHandler extends Config{
             preparedStatement.setString(2, user.getPassword());
             resultSet = preparedStatement.executeQuery(); //select
         } catch(ClassNotFoundException | SQLException e){
-            e.printStackTrace();
+            LOGGER.error("signInUser method select sqlException");
         }
         return resultSet;
     }
@@ -95,7 +100,7 @@ public class DBHandler extends Config{
                 roleList.add(resultSet.getString(1));
             }
         } catch(ClassNotFoundException | SQLException e){
-            e.printStackTrace();
+            LOGGER.error("checkAdminRights Exception");
         }
 
         return Integer.valueOf(roleList.get(0)) == ADMIN_ROLE;

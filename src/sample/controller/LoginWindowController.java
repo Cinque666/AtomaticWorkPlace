@@ -95,7 +95,10 @@ public class LoginWindowController {
     public static void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(LoginWindowController.class.getResource("/loginWindow.fxml"));
         primaryStage.setTitle("АРМ");
-        primaryStage.setScene(new Scene(root, 700, 400));
+        Scene scene = new Scene(root, 700, 400);
+//        scene.getStylesheets().add(LoginWindowController.class.getResource("/styles/login.css").toExternalForm());
+
+        primaryStage.setScene(scene);
         primaryStage.getIcons().add(new Image("/images/icon.png"));
         primaryStage.show();
         LoginWindowController.primaryStage = primaryStage;

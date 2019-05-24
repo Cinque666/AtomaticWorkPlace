@@ -18,7 +18,7 @@
                   <Font name="Times New Roman" size="22.0" />
                </font>
             </Label>
-            <Button fx:id="authorizationButton" layoutX="323.0" layoutY="142.0" mnemonicParsing="false" style="-fx-background-color: silver;" text="Войти">
+            <Button id="authorizationButton" fx:id="authorizationButton" layoutX="323.0" layoutY="142.0" mnemonicParsing="false" style="-fx-background-color: silver;" styleClass="authorizationButton" stylesheets="@styles/login.css" text="Войти">
                <font>
                   <Font size="14.0" />
                </font>

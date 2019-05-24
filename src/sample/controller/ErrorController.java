@@ -54,4 +54,12 @@ public class ErrorController {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+    static void close(){
+        stage.close();
+    }
+
+    static Stage getStage(){
+        return stage;
+    }
 }

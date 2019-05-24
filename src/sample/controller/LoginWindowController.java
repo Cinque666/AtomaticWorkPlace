@@ -57,7 +57,12 @@ public class LoginWindowController {
                 }
             } else {
                 try {
-                    ErrorController.start(new Stage());
+                    if(ErrorController.getStage() == null) {
+                        ErrorController.start(new Stage());
+                    } else{
+                        ErrorController.close();
+                        ErrorController.start(new Stage());
+                    }
                 } catch (IOException e) {
                     LOGGER.error("authorization initialize Error");
                 }
@@ -88,7 +93,12 @@ public class LoginWindowController {
                 LOGGER.error("loginUser IOException");
             }
         } else{
-            ErrorController.start(new Stage());
+            if(ErrorController.getStage() == null) {
+                ErrorController.start(new Stage());
+            } else{
+                ErrorController.close();
+                ErrorController.start(new Stage());
+            }
         }
     }
 

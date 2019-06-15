@@ -10,6 +10,9 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import sample.controller.constants.ControllerConstants;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,6 +23,7 @@ import java.util.ResourceBundle;
 public class ErrorController {
 
     private static Stage stage;
+    private static final Logger LOGGER = LogManager.getLogger(ErrorController.class);
 
     @FXML
     private ResourceBundle resources;
@@ -40,17 +44,18 @@ public class ErrorController {
     }
 
     static void start(Stage primaryStage) throws IOException {
+        LOGGER.info("ErrorWindow start");
         stage = primaryStage;
-        Parent root = FXMLLoader.load(ErrorController.class.getResource("/errorWindow.fxml"));
+        Parent root = FXMLLoader.load(ErrorController.class.getResource(ControllerConstants.ERROR_WINDOW));
         Scene scene = new Scene(root);
-        primaryStage.setTitle("ERROR");
+        primaryStage.setTitle(ControllerConstants.ERROR_TITLE);
 
-        String file = "resources/sounds/Error.mp3";
+        String file = ControllerConstants.ERROR_SOUND;
         Media sound = new Media(new File(file).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
 
-        primaryStage.getIcons().add(new Image("/images/erroricon.png"));
+        primaryStage.getIcons().add(new Image(ControllerConstants.ERROR_ICON));
         primaryStage.setScene(scene);
         primaryStage.show();
     }

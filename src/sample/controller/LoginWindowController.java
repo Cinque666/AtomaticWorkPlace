@@ -17,6 +17,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import sample.bean.User;
 import sample.connection.DBHandler;
+import sample.controller.constants.ControllerConstants;
 
 /**
  * Entry Window
@@ -103,13 +104,14 @@ public class LoginWindowController {
     }
 
     public static void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(LoginWindowController.class.getResource("/loginWindow.fxml"));
-        primaryStage.setTitle("АРМ");
+        LOGGER.info("LoginWindow start");
+        Parent root = FXMLLoader.load(LoginWindowController.class.getResource(ControllerConstants.LOGIN_WINDOW));
+        primaryStage.setTitle(ControllerConstants.ARM);
         Scene scene = new Scene(root, 700, 400);
 //        scene.getStylesheets().add(LoginWindowController.class.getResource("/styles/login.css").toExternalForm());
 
         primaryStage.setScene(scene);
-        primaryStage.getIcons().add(new Image("/images/icon.png"));
+        primaryStage.getIcons().add(new Image(ControllerConstants.ICON_URL));
         primaryStage.show();
         LoginWindowController.primaryStage = primaryStage;
     }

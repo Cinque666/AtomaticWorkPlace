@@ -2,7 +2,6 @@ package sample.controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -17,6 +16,7 @@ import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import sample.connection.DBHandler;
+import sample.controller.constants.ControllerConstants;
 
 public class WorkWindowController {
 
@@ -67,23 +67,21 @@ public class WorkWindowController {
         });
     }
 
-    static void start(Stage primaryStage, String login) throws IOException {
+    static void start(Stage prStage, String login) throws IOException {
+        LOGGER.info("WorkWindowController start");
         usernameHelper = login;
-        Parent root = FXMLLoader.load(WorkWindowController.class.getResource("/workWindow.fxml"));
+        Parent root = FXMLLoader.load(WorkWindowController.class.getResource(ControllerConstants.WORK_WINDOW));
         Scene scene = new Scene(root);
-        primaryStage.setTitle("APM");
-        primaryStage.getIcons().add(new Image("/images/icon.png"));
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        stage = primaryStage;
+        prStage.setTitle(ControllerConstants.ARM);
+        prStage.getIcons().add(new Image(ControllerConstants.ICON_URL));
+        prStage.setScene(scene);
+        prStage.show();
+        stage = prStage;
     }
 
     private void openAdminMenu() throws IOException {
         AdminMenuController.start(new Stage());
     }
 
-    private void checkAdminRights(){
-
-    }
 }
 

@@ -2,3 +2,29 @@
 [ERROR] 2019-05-24 14:14:12.120 [JavaFX Application Thread] LoginWindowController - authorization initialize Error
 [ERROR] 2019-05-24 14:14:16.130 [JavaFX Application Thread] LoginWindowController - authorization initialize Error
 [ERROR] 2019-05-24 14:14:29.661 [JavaFX Application Thread] LoginWindowController - authorization initialize Error
+[ERROR] 2019-06-15 07:08:48.290 [JavaFX Application Thread] AdminMenuController - addUserButton IOException
+[ERROR] 2019-06-15 07:08:52.934 [JavaFX Application Thread] AdminMenuController - addUserButton IOException
+[ERROR] 2019-06-15 07:08:53.638 [JavaFX Application Thread] AdminMenuController - addUserButton IOException
+[ERROR] 2019-06-15 07:08:53.952 [JavaFX Application Thread] AdminMenuController - addUserButton IOException
+[ERROR] 2019-06-15 07:08:54.182 [JavaFX Application Thread] AdminMenuController - addUserButton IOException
+[ERROR] 2019-06-15 07:08:54.388 [JavaFX Application Thread] AdminMenuController - addUserButton IOException
+[ERROR] 2019-06-15 07:08:54.499 [JavaFX Application Thread] AdminMenuController - addUserButton IOException
+[ERROR] 2019-06-15 07:08:54.608 [JavaFX Application Thread] AdminMenuController - addUserButton IOException
+[ERROR] 2019-06-15 07:10:00.880 [JavaFX Application Thread] AdminMenuController - addUserButton IOException
+[ERROR] 2019-06-15 07:10:12.747 [JavaFX Application Thread] AdminMenuController - addUserButton IOException
+[ERROR] 2019-06-15 07:14:30.637 [JavaFX Application Thread] AdminMenuController - addUserButton IOException
+[ERROR] 2019-06-15 07:16:29.471 [JavaFX Application Thread] AdminMenuController - addUserButton IOException
+[ERROR] 2019-06-15 07:16:30.400 [JavaFX Application Thread] AdminMenuController - addUserButton IOException
+[ERROR] 2019-06-15 07:16:30.729 [JavaFX Application Thread] AdminMenuController - addUserButton IOException
+[ERROR] 2019-06-15 07:16:30.987 [JavaFX Application Thread] AdminMenuController - addUserButton IOException
+[ERROR] 2019-06-15 07:16:31.710 [JavaFX Application Thread] AdminMenuController - addUserButton IOException
+[ERROR] 2019-06-15 07:18:50.048 [JavaFX Application Thread] AdminMenuController - addUserButton IOException
+[DEBUG] 2019-06-15 07:19:58.138 [JavaFX Application Thread] AddUserController - after observable
+[INFO ] 2019-06-15 08:07:36.469 [JavaFX Application Thread] LoginWindowController - LoginWindow start
+[INFO ] 2019-06-15 08:07:42.314 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[INFO ] 2019-06-15 08:07:42.984 [JavaFX Application Thread] AdminMenuController - AdminMenuWindow start
+[INFO ] 2019-06-15 08:07:44.024 [JavaFX Application Thread] AddUserController - addUserWindow start
+[INFO ] 2019-06-15 08:21:03.368 [JavaFX Application Thread] LoginWindowController - LoginWindow start
+[INFO ] 2019-06-15 08:21:08.788 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[INFO ] 2019-06-15 08:21:11.107 [JavaFX Application Thread] AdminMenuController - AdminMenuWindow start
+[INFO ] 2019-06-15 08:21:12.085 [JavaFX Application Thread] AddUserController - addUserWindow start

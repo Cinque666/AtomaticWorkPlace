@@ -91,6 +91,7 @@ public class LoginWindowController {
                 WorkWindowController.start(new Stage(), user.getLogin());
                 primaryStage.close();
             } catch(IOException e){
+                e.printStackTrace();
                 LOGGER.error("loginUser IOException");
             }
         } else{

@@ -14,6 +14,7 @@ import java.util.List;
 
 import static sample.connection.constants.Const.*;
 
+@SuppressWarnings("Duplicates")
 public class DBHandler extends Config{
 
     public static final DBHandler INSTANCE = new DBHandler();
@@ -35,6 +36,8 @@ public class DBHandler extends Config{
     private final String CONNECTION = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName
             + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+    private static final String CHECK_LOGIN_EXISTING = "SELECT login FROM " + USER_TABLE + " WHERE " + USERS_LOGIN
+            + "=?";
 
     private DBHandler(){
     }
@@ -104,5 +107,22 @@ public class DBHandler extends Config{
         }
 
         return Integer.valueOf(roleList.get(0)) == ADMIN_ROLE;
+    }
+
+    public boolean checkLoginExisting(String login){
+        ResultSet resultSet;
+        List<String> loginList = new ArrayList<>();
+        try{
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(CHECK_LOGIN_EXISTING);
+            preparedStatement.setString(1, login);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                loginList.add(resultSet.getString(1));
+            }
+        } catch(ClassNotFoundException | SQLException e){
+            LOGGER.error("checkLogin Exception");
+        }
+        System.out.println(loginList.get(0));
+        return loginList.get(0).equals(login);
     }
 }

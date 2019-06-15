@@ -16,6 +16,8 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import sample.bean.User;
+import sample.connection.DBHandler;
 import sample.controller.constants.ControllerConstants;
 import sample.validator.LoginValidator;
 import sample.validator.NameValidator;
@@ -62,7 +64,7 @@ public class AddUserController {
             String surname = this.surname.getText().trim();
             if(LoginValidator.INSTANCE.isValid(login) || PasswordValidator.INSTANCE.isValid(password)){
                 if(NameValidator.INSTANCE.isValid(name) || SurnameValidator.INSTANCE.isValid(surname)){
-
+                    signUpUser(login, password, name, surname, checkRole());
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("ERROR");
@@ -89,5 +91,35 @@ public class AddUserController {
         primaryStage.setScene(scene);
         primaryStage.show();
         AddUserController.stage = primaryStage;
+    }
+
+    public static Stage getStage(){
+        return AddUserController.stage;
+    }
+
+//    public static void close(){
+//        AddUserController.stage.close();
+//    }
+
+    private void signUpUser(String login, String password, String name, String surname, int role){
+//        System.out.println("signup");
+        if(!DBHandler.INSTANCE.checkLoginExisting(login)) {
+            User user = new User(name, surname, login, password, role);
+            System.out.println("User created");
+        }
+    }
+
+    private int checkRole(){
+        if(comboxRole.getValue().equals(ControllerConstants.ADMINISTRATOR)){
+            return 2;
+        }
+        else {
+            return 1;
+        }
+    }
+
+    private boolean isLoginExist(String login){
+
+        return true;
     }
 }

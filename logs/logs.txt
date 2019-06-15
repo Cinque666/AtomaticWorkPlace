@@ -69,3 +69,68 @@
 [INFO ] 2019-06-15 09:47:04.431 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
 [INFO ] 2019-06-15 09:47:05.211 [JavaFX Application Thread] AdminMenuController - AdminMenuWindow start
 [INFO ] 2019-06-15 09:47:06.098 [JavaFX Application Thread] AddUserController - addUserWindow start
+[INFO ] 2019-06-15 10:15:27.232 [JavaFX Application Thread] LoginWindowController - LoginWindow start
+[INFO ] 2019-06-15 10:15:31.603 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[INFO ] 2019-06-15 10:15:34.110 [JavaFX Application Thread] LoginWindowController - LoginWindow start
+[INFO ] 2019-06-15 10:46:30.768 [JavaFX Application Thread] LoginWindowController - LoginWindow start
+[INFO ] 2019-06-15 10:46:36.046 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 10:46:36.051 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 10:46:39.565 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 10:46:39.569 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 10:46:49.689 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 10:46:49.696 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 10:47:33.998 [JavaFX Application Thread] LoginWindowController - LoginWindow start
+[INFO ] 2019-06-15 10:47:38.578 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 10:47:38.583 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 10:47:40.969 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 10:47:40.973 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 10:47:41.984 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 10:47:41.991 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 10:47:42.938 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 10:47:42.941 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 10:47:43.179 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 10:47:43.187 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 10:47:43.436 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 10:47:43.447 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 10:47:43.564 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 10:47:43.573 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 10:47:43.685 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 10:47:43.695 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 10:47:43.953 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 10:47:43.963 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 10:47:44.181 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 10:47:44.188 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 10:47:44.336 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 10:47:44.343 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 10:47:44.786 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 10:47:44.789 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 10:50:00.246 [JavaFX Application Thread] LoginWindowController - LoginWindow start
+[INFO ] 2019-06-15 10:50:05.903 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 10:50:05.908 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 10:50:31.451 [JavaFX Application Thread] LoginWindowController - LoginWindow start
+[INFO ] 2019-06-15 10:50:35.686 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 10:50:35.691 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 10:58:09.792 [JavaFX Application Thread] LoginWindowController - LoginWindow start
+[INFO ] 2019-06-15 10:58:15.659 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 10:58:15.664 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 10:58:29.220 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 10:58:29.228 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 10:58:40.429 [JavaFX Application Thread] LoginWindowController - LoginWindow start
+[INFO ] 2019-06-15 10:58:44.128 [JavaFX Application Thread] ErrorController - ErrorWindow start
+[INFO ] 2019-06-15 11:00:54.723 [JavaFX Application Thread] LoginWindowController - LoginWindow start
+[INFO ] 2019-06-15 11:00:59.967 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 11:00:59.972 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 11:01:22.100 [JavaFX Application Thread] LoginWindowController - LoginWindow start
+[INFO ] 2019-06-15 11:01:26.133 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 11:01:26.140 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 11:05:09.702 [JavaFX Application Thread] LoginWindowController - LoginWindow start
+[INFO ] 2019-06-15 11:05:14.284 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[ERROR] 2019-06-15 11:05:14.291 [JavaFX Application Thread] LoginWindowController - loginUser IOException
+[INFO ] 2019-06-15 11:05:29.778 [JavaFX Application Thread] LoginWindowController - LoginWindow start
+[INFO ] 2019-06-15 11:05:34.001 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[INFO ] 2019-06-15 11:05:38.258 [JavaFX Application Thread] AdminMenuController - AdminMenuWindow start
+[INFO ] 2019-06-15 11:05:39.297 [JavaFX Application Thread] AddUserController - addUserWindow start
+[INFO ] 2019-06-15 11:07:01.284 [JavaFX Application Thread] LoginWindowController - LoginWindow start
+[INFO ] 2019-06-15 11:07:05.854 [JavaFX Application Thread] WorkWindowController - WorkWindowController start
+[INFO ] 2019-06-15 11:07:06.538 [JavaFX Application Thread] AdminMenuController - AdminMenuWindow start
+[INFO ] 2019-06-15 11:07:07.469 [JavaFX Application Thread] AddUserController - addUserWindow start

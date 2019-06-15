@@ -44,7 +44,7 @@ public class WorkWindowController {
 
     @FXML
     void initialize() {
-
+//        stage.setOnCloseRequest(event -> System.out.println());
         exitHyperlink.setOnAction(event -> {
             try {
                 LoginWindowController.start(new Stage());
@@ -67,6 +67,7 @@ public class WorkWindowController {
         });
     }
 
+    @SuppressWarnings("Duplicates")
     static void start(Stage prStage, String login) throws IOException {
         LOGGER.info("WorkWindowController start");
         usernameHelper = login;

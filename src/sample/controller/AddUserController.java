@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -16,7 +17,12 @@ import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import sample.controller.constants.ControllerConstants;
+import sample.validator.LoginValidator;
+import sample.validator.NameValidator;
+import sample.validator.PasswordValidator;
+import sample.validator.SurnameValidator;
 
+@SuppressWarnings("ALL")
 public class AddUserController {
 
     private static Stage stage;
@@ -32,7 +38,7 @@ public class AddUserController {
     private ComboBox<String> comboxRole;
 
     @FXML
-    private Button authorizationButton;
+    private Button signUpButton;
 
     @FXML
     private TextField login;
@@ -49,6 +55,28 @@ public class AddUserController {
     @FXML
     void initialize() {
         comboxRole.getItems().addAll(ControllerConstants.ADMINISTRATOR, ControllerConstants.WORKER);
+        signUpButton.setOnAction(event -> {
+            String login = this.login.getText().trim();
+            String password = this.password.getText().trim();
+            String name = this.name.getText().trim();
+            String surname = this.surname.getText().trim();
+            if(LoginValidator.INSTANCE.isValid(login) || PasswordValidator.INSTANCE.isValid(password)){
+                if(NameValidator.INSTANCE.isValid(name) || SurnameValidator.INSTANCE.isValid(surname)){
+
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("ERROR");
+                    alert.setContentText("Неверное имя или фамилия");
+                    alert.showAndWait();
+                }
+            } else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR");
+                alert.setContentText("Неверный логин или пароль");
+                alert.showAndWait();
+            }
+//            System.out.println(LoginValidator.INSTANCE.isValid(login.getText().trim()));
+        });
 
     }
 

@@ -102,10 +102,14 @@ public class AddUserController {
 //    }
 
     private void signUpUser(String login, String password, String name, String surname, int role){
-//        System.out.println("signup");
         if(!DBHandler.INSTANCE.checkLoginExisting(login)) {
             User user = new User(name, surname, login, password, role);
-            System.out.println("User created");
+            user.getRole();
+            DBHandler.INSTANCE.signUpUser(user);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("INFO");
+            alert.setContentText("Пользователь успешно создан");
+            alert.showAndWait();
         }
     }
 

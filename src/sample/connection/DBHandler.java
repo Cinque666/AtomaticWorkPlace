@@ -122,7 +122,11 @@ public class DBHandler extends Config{
         } catch(ClassNotFoundException | SQLException e){
             LOGGER.error("checkLogin Exception");
         }
-        System.out.println(loginList.get(0));
-        return loginList.get(0).equals(login);
+//        System.out.println(loginList.get(0));
+        if(loginList.isEmpty()){
+            return false;
+        } else {
+            return loginList.get(0).equals(login);
+        }
     }
 }

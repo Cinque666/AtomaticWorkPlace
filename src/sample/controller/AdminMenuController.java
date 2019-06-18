@@ -40,6 +40,7 @@ public class AdminMenuController {
         addUserButton.setOnAction(event -> {
             try {
                 AddUserController.start(new Stage());
+                stage.close();
             } catch (IOException e) {
                 LOGGER.error("addUserButton IOException");
             }

@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -55,6 +56,9 @@ public class AddUserController {
     private TextField surname;
 
     @FXML
+    private Text errorMessage;
+
+    @FXML
     void initialize() {
         comboxRole.getItems().addAll(ControllerConstants.ADMINISTRATOR, ControllerConstants.WORKER);
         signUpButton.setOnAction(event -> {
@@ -72,10 +76,12 @@ public class AddUserController {
                     alert.showAndWait();
                 }
             } else{
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("ERROR");
-                alert.setContentText("Неверный логин или пароль");
-                alert.showAndWait();
+                errorMessage.setText("Неверный логин!");
+//                errorMessage.setStyle("-fx-text-inner-color: red; -fx-font-size: 16px;");
+//                Alert alert = new Alert(Alert.AlertType.ERROR);
+//                alert.setTitle("ERROR");
+//                alert.setContentText("Неверный логин или пароль");
+//                alert.showAndWait();
             }
 //            System.out.println(LoginValidator.INSTANCE.isValid(login.getText().trim()));
         });
@@ -109,6 +115,11 @@ public class AddUserController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("INFO");
             alert.setContentText("Пользователь успешно создан");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setContentText("Пользователь уже создан, повторите попытку.");
             alert.showAndWait();
         }
     }

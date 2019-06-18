@@ -37,6 +37,9 @@ public class WorkWindowController {
     private static Stage stage;
 
     @FXML
+    private Text timer;
+
+    @FXML
     private URL location;
 
     @FXML
@@ -65,6 +68,8 @@ public class WorkWindowController {
                 LOGGER.error("adminMenuButton initialize Error");
             }
         });
+        new TimerCounter().start();
+        //Timer TimerCounter = new Timer();
     }
 
     @SuppressWarnings("Duplicates")
@@ -84,5 +89,35 @@ public class WorkWindowController {
         AdminMenuController.start(new Stage());
     }
 
+    class TimerCounter extends Thread{
+        public void run(){
+            int hoursCounter = 0;
+            int minutesCounter = 0;
+            int secondsCounter = 0;
+            int totalTime = 0;
+            try{
+                while (true) {
+                    secondsCounter++;
+                    totalTime++;
+                    if(secondsCounter == 60){
+                        secondsCounter = 0;
+                        minutesCounter++;
+                        if(secondsCounter == 59 && minutesCounter == 59){
+                            hoursCounter++;
+                            minutesCounter = 0;
+                            secondsCounter = 0;
+                        }
+                    }
+                    timer.setText(hoursCounter + ":" + minutesCounter + ":" + secondsCounter);
+                    Thread.sleep(1000);
+                }
+            }
+            catch(InterruptedException e){
+                LOGGER.error("Thread exception");
+            }
+            //System.out.printf("%s fiished... \n", Thread.currentThread().getName());
+        }
+        }
 }
+
 

@@ -36,7 +36,10 @@ public class AdminMenuController {
     private Button DeleteUserButton;
 
     public void initialize(){
-        closeButton.setOnAction(event -> stage.close());
+        closeButton.setOnAction(event -> {
+            stage.close();
+            WorkWindowController.getStage().show();
+        });
         addUserButton.setOnAction(event -> {
             try {
                 AddUserController.start(new Stage());

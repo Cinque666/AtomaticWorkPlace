@@ -59,6 +59,9 @@ public class AddUserController {
     private Text errorMessage;
 
     @FXML
+    private Button back;
+
+    @FXML
     void initialize() {
         comboxRole.getItems().addAll(ControllerConstants.ADMINISTRATOR, ControllerConstants.WORKER);
         signUpButton.setOnAction(event -> {
@@ -85,7 +88,10 @@ public class AddUserController {
             }
 //            System.out.println(LoginValidator.INSTANCE.isValid(login.getText().trim()));
         });
-
+        back.setOnAction(event -> {
+            stage.close();
+            WorkWindowController.getStage().show();
+        });
     }
 
     public static void start(Stage primaryStage) throws IOException {
@@ -134,7 +140,6 @@ public class AddUserController {
     }
 
     private boolean isLoginExist(String login){
-
         return true;
     }
 }

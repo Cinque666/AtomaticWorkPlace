@@ -46,7 +46,20 @@ public class WorkWindowController {
     private Hyperlink exitHyperlink;
 
     @FXML
+    private Button eventList;
+
+    @FXML
+    private Button customers;
+
+    @FXML
     void initialize() {
+        eventList.setOnAction(event -> {
+            try {
+                EventListController.start(new Stage());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 //        stage.setOnCloseRequest(event -> System.out.println());
         exitHyperlink.setOnAction(event -> {
             try {
@@ -58,6 +71,7 @@ public class WorkWindowController {
         });
         username.setText(usernameHelper);
         adminMenuButton.setOnAction(event -> {
+            adminMenuButton.getScene().getWindow().hide();
             try {
                 if(DBHandler.INSTANCE.checkAdminRights(username.getText())){
                     openAdminMenu();
@@ -69,6 +83,13 @@ public class WorkWindowController {
             }
         });
         new TimerCounter().start();
+        customers.setOnAction(event -> {
+            try {
+                CustomersController.start(new Stage());
+            } catch (IOException e) {
+                LOGGER.error("Customer controller start error");
+            }
+        });
         //Timer TimerCounter = new Timer();
     }
 
@@ -87,6 +108,10 @@ public class WorkWindowController {
 
     private void openAdminMenu() throws IOException {
         AdminMenuController.start(new Stage());
+    }
+
+    public static Stage getStage(){
+        return stage;
     }
 
     class TimerCounter extends Thread{

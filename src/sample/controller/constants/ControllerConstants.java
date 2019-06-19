@@ -18,4 +18,8 @@ public class ControllerConstants {
     public static final String RIGHTS_ERROR = "Rights error";
     public static final String RIGHTS_ERROR_ICON = "/images/erroricon.png";
     public static final String WORK_WINDOW = "/workWindow.fxml";
+    public static final String EVENT_LIST = "/eventList.fxml";
+    public static final String EVENT_LIST_TITLE = "Список заказов";
+    public static final String CUSTOMERS = "/customers.fxml";
+    public static final String CUSTOMERS_TITLE = "Список клиентов";
 }

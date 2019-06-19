@@ -38,5 +38,6 @@
                   <Font name="Times New Roman" size="22.0" />
               </font>
           </Label>
+      <Button fx:id="back" layoutX="614.0" layoutY="49.0" mnemonicParsing="false" text="Назад" />
     </children>
 </AnchorPane>

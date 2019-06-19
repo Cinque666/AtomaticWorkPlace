@@ -2,6 +2,7 @@ package sample.connection;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
+import sample.bean.Event;
 import sample.bean.User;
 
 import java.sql.Connection;
@@ -38,6 +39,8 @@ public class DBHandler extends Config{
     private final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String CHECK_LOGIN_EXISTING = "SELECT login FROM " + USER_TABLE + " WHERE " + USERS_LOGIN
             + "=?";
+    private static final String SELECT_EVENT = "SELECT * FROM " + EVENT_TABLE;
+    private static final String SELECT_CUSTOMERS = "SELECT * FROM " + CUSTOMERS_TABLE;
 
     private DBHandler(){
     }
@@ -128,5 +131,23 @@ public class DBHandler extends Config{
         } else {
             return loginList.get(0).equals(login);
         }
+    }
+
+    public ResultSet getEventData(){
+        ResultSet resultSet = null;
+        try {
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(SELECT_EVENT);
+            resultSet = preparedStatement.executeQuery();
+        } catch(ClassNotFoundException | SQLException e) {
+            LOGGER.error("checkLogin Exception");
+        }
+        return resultSet;
+    }
+
+    public ResultSet getCustomerData() throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = null;
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(SELECT_CUSTOMERS);
+        resultSet = preparedStatement.executeQuery();
+        return resultSet;
     }
 }

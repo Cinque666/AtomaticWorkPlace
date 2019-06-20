@@ -11,4 +11,5 @@ public class Const {
     public static final String USERS_ROLE = "role";
     public static final String EVENT_TABLE = "event";
     public static final String CUSTOMERS_TABLE = "customers";
+    public static final String EVENT_VIEW = "event_view";
 }

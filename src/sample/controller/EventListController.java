@@ -16,7 +16,7 @@ import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import sample.bean.Event;
+import sample.bean.EventView;
 import sample.connection.DBHandler;
 import sample.controller.constants.ControllerConstants;
 
@@ -28,13 +28,13 @@ public class EventListController {
 
     private static Stage primaryStage;
     private static final Logger LOGGER = LogManager.getLogger(EventListController.class);
-    private ObservableList<Event> eventsData = FXCollections.observableArrayList();
+    private ObservableList<EventView> eventsData = FXCollections.observableArrayList();
 
     @FXML
     private Button closeButton;
 
     @FXML
-    private TableView<Event> eventTable;
+    private TableView<EventView> eventTable;
 
     @FXML
     private Button addTableDataButton;
@@ -42,18 +42,18 @@ public class EventListController {
     public void initialize() throws SQLException {
         initData();
         closeButton.setOnAction(event -> primaryStage.close());
-        TableColumn<Event, String> idEvent
+        TableColumn<EventView, String> idEvent
                 = new TableColumn<>("Номер");
-        TableColumn<Event, String> idWorker
-                = new TableColumn<>("Номер рабочего");
-        TableColumn<Event, String> idCustomer
-                = new TableColumn<>("Номер клиента");
-        TableColumn<Event, String> cost
+        TableColumn<EventView, String> idWorker
+                = new TableColumn<>("Фамилия рабочего");
+        TableColumn<EventView, String> idCustomer
+                = new TableColumn<>("Фамилия клиента");
+        TableColumn<EventView, String> cost
                 = new TableColumn<>("Стоимость");
         eventTable.getColumns().addAll(idEvent, idWorker, idCustomer, cost);
-        idEvent.setCellValueFactory(new PropertyValueFactory<>("idEvent"));
-        idWorker.setCellValueFactory(new PropertyValueFactory<>("idUser"));
-        idCustomer.setCellValueFactory(new PropertyValueFactory<>("idCustomer"));
+        idEvent.setCellValueFactory(new PropertyValueFactory<>("number"));
+        idWorker.setCellValueFactory(new PropertyValueFactory<>("workerSurname"));
+        idCustomer.setCellValueFactory(new PropertyValueFactory<>("customerSurname"));
         cost.setCellValueFactory(new PropertyValueFactory<>("cost"));
         eventTable.setOnMouseClicked(mouseEvent -> {
             if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
@@ -80,13 +80,14 @@ public class EventListController {
 
     private void initData() throws SQLException {
         ResultSet resultSet = DBHandler.INSTANCE.getEventData();
-        int idEvent, idWorker, idCustomer, cost;
+        int idEvent, cost;
+        String idCustomer, idWorker;
         while(resultSet.next()){
-            idEvent = resultSet.getInt("idevent");
-            idWorker = resultSet.getInt("idusers");
-            idCustomer = resultSet.getInt("idcustomer");
+            idEvent = resultSet.getInt("номер");
+            idWorker = resultSet.getString("работник");
+            idCustomer = resultSet.getString("клиент");
             cost = resultSet.getInt("cost");
-            eventsData.add(new Event(idEvent, idCustomer, idWorker, cost));
+            eventsData.add(new EventView(idEvent, idWorker, idCustomer, cost));
         }
         eventTable.setItems(eventsData);
     }

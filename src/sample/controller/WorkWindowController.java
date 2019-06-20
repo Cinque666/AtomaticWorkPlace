@@ -1,14 +1,18 @@
 package sample.controller;
 
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import sample.connection.DBHandler;
@@ -16,11 +20,13 @@ import sample.controller.constants.ControllerConstants;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class WorkWindowController {
 
     private static final Logger LOGGER = (Logger) LogManager.getLogger(WorkWindowController.class);
+    private TimerCounter timerCounter;
 
     @FXML
     private Button adminMenuButton;
@@ -52,6 +58,9 @@ public class WorkWindowController {
     private Button customers;
 
     @FXML
+    private Text adminLvlMessage;
+
+    @FXML
     void initialize() {
         eventList.setOnAction(event -> {
             try {
@@ -60,7 +69,32 @@ public class WorkWindowController {
                 e.printStackTrace();
             }
         });
+//        stage.setOnCloseRequest(confirmCloseEventHandler);
 //        stage.setOnCloseRequest(event -> System.out.println());
+//        stage.setOnCloseRequest(event -> {
+//
+//            final Stage dialog = new Stage();
+//            dialog.initModality(Modality.APPLICATION_MODAL);
+//
+//            // Frage - Label
+//            Label label = new Label("Do you really want to quit?");
+//
+//            // Antwort-Button JA
+//            Button okBtn = new Button("Yes");
+//            okBtn.setOnAction(event12 ->{
+//                Platform.exit();
+//                dialog.close();
+//                event.consume();
+//            });
+//
+//
+//            // Antwort-Button NEIN
+//            Button cancelBtn = new Button("No");
+//            cancelBtn.setOnAction(event1 -> {
+////                stage.show();
+//                dialog.close();
+//            });
+//        });
         exitHyperlink.setOnAction(event -> {
             try {
                 LoginWindowController.start(new Stage());
@@ -71,18 +105,21 @@ public class WorkWindowController {
         });
         username.setText(usernameHelper);
         adminMenuButton.setOnAction(event -> {
-            adminMenuButton.getScene().getWindow().hide();
+
             try {
                 if(DBHandler.INSTANCE.checkAdminRights(username.getText())){
+                    adminMenuButton.getScene().getWindow().hide();
                     openAdminMenu();
                 } else{
-                    RightsErrorController.start(new Stage());
+                    adminLvlMessage.setText("Недостаточно прав.");
+//                    RightsErrorController.start(new Stage());
                 }
             } catch (IOException e) {
                 LOGGER.error("adminMenuButton initialize Error");
             }
         });
-        new TimerCounter().start();
+        timerCounter = new TimerCounter();
+        timerCounter.start();
         customers.setOnAction(event -> {
             try {
                 CustomersController.start(new Stage());
@@ -142,7 +179,32 @@ public class WorkWindowController {
             }
             //System.out.printf("%s fiished... \n", Thread.currentThread().getName());
         }
-        }
+    }
+//    private EventHandler<WindowEvent> confirmCloseEventHandler = event -> {
+//        Alert closeConfirmation = new Alert(
+//                Alert.AlertType.CONFIRMATION,
+//                "Are you sure you want to exit?"
+//        );
+//        Button exitButton = (Button) closeConfirmation.getDialogPane().lookupButton(
+//                ButtonType.OK
+//        );
+//        exitButton.setText("Exit");
+//        closeConfirmation.setHeaderText("Confirm Exit");
+//        closeConfirmation.initModality(Modality.APPLICATION_MODAL);
+//        closeConfirmation.initOwner(stage);
+//
+//        // normally, you would just use the default alert positioning,
+//        // but for this simple sample the main stage is small,
+//        // so explicitly position the alert so that the main window can still be seen.
+//        closeConfirmation.setX(stage.getX());
+//        closeConfirmation.setY(stage.getY() + stage.getHeight());
+//
+//        Optional<ButtonType> closeResponse = closeConfirmation.showAndWait();
+//        if (!ButtonType.OK.equals(closeResponse.get())) {
+//            event.consume();
+//        }
+//    };
+
 }
 
 

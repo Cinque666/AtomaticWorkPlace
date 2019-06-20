@@ -41,6 +41,7 @@ public class DBHandler extends Config{
             + "=?";
     private static final String SELECT_EVENT = "SELECT * FROM " + EVENT_TABLE;
     private static final String SELECT_CUSTOMERS = "SELECT * FROM " + CUSTOMERS_TABLE;
+    private static final String SELECT_EVENT_VIEW = "SELECT * FROM " + EVENT_VIEW;
 
     private DBHandler(){
     }
@@ -136,7 +137,7 @@ public class DBHandler extends Config{
     public ResultSet getEventData(){
         ResultSet resultSet = null;
         try {
-            PreparedStatement preparedStatement = getDbConnection().prepareStatement(SELECT_EVENT);
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(SELECT_EVENT_VIEW);
             resultSet = preparedStatement.executeQuery();
         } catch(ClassNotFoundException | SQLException e) {
             LOGGER.error("checkLogin Exception");
@@ -145,7 +146,7 @@ public class DBHandler extends Config{
     }
 
     public ResultSet getCustomerData() throws SQLException, ClassNotFoundException {
-        ResultSet resultSet = null;
+        ResultSet resultSet;
         PreparedStatement preparedStatement = getDbConnection().prepareStatement(SELECT_CUSTOMERS);
         resultSet = preparedStatement.executeQuery();
         return resultSet;

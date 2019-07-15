@@ -16,6 +16,13 @@ public class Customer {
         this.passport = passport;
     }
 
+    public Customer(String name, String surname, String address, String passport) {
+        this.name = name;
+        this.surname = surname;
+        this.address = address;
+        this.passport = passport;
+    }
+
     public int getIdCustomers() {
         return idCustomers;
     }

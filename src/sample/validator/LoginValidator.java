@@ -1,26 +1,27 @@
 package sample.validator;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LoginValidator {
-    private static final String SYMBOLS = "/-,.]}%#@!([])])";
-//    private static final String REGEX = "/^[a-zA-Z](.[a-zA-Z0-9_-]*)$/";
-    private static Pattern pattern;
+
+    private Pattern pattern;
+    private Matcher matcher;
+    private static final String LOGIN_PATTERN = "[A-Za-z0-9]{1,}";
     public static final LoginValidator INSTANCE = new LoginValidator();
 
-    private LoginValidator(){}
+    private LoginValidator(){
 
-    public boolean isValid(String login){
-//        return !login.matches(SYMBOLS) && !login.isEmpty();
-//                Pattern.compile(REGEX);
-//        Matcher matcher = pattern.matcher(login);
-//        if(Pattern.matcher(login));
-        return !isEmptyLogin(login) && !login.contains(SYMBOLS);
     }
-     private boolean isEmptyLogin(String login){
-//        login.
-//        return login.matches(VALID);
-         return  login.contains(" ") || login.contains("_") || login.equals("")
-                 || login.contains("-") || login.contains("+");
-     }
+
+    @SuppressWarnings("Duplicates")
+    public boolean isValid(String login){
+        pattern = Pattern.compile(LOGIN_PATTERN);
+        matcher = pattern.matcher(login);
+        if(!login.equals("")) {
+            return matcher.matches();
+        } else {
+            return false;
+        }
+    }
 }

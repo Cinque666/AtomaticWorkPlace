@@ -2,6 +2,7 @@ package sample.connection;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
+import sample.bean.Customer;
 import sample.bean.Event;
 import sample.bean.User;
 
@@ -42,6 +43,15 @@ public class DBHandler extends Config{
     private static final String SELECT_EVENT = "SELECT * FROM " + EVENT_TABLE;
     private static final String SELECT_CUSTOMERS = "SELECT * FROM " + CUSTOMERS_TABLE;
     private static final String SELECT_EVENT_VIEW = "SELECT * FROM " + EVENT_VIEW;
+    private static final String INSERT_INTO_CUSTOMERS_TABLE = " INSERT INTO " + CUSTOMERS_TABLE +
+            "("
+            + CUSTOMERS_NAME + ", "
+            + CUSTOMERS_SURNAME + ", "
+            + CUSTOMERS_ADDRESS + ", "
+            + CUSTOMERS_PASSPORT + ")"
+            + " VALUES(?, ?, ?, ?)";
+    private static final String UPDATE_USERS_TIME = "UPDATE " + USER_TABLE + " SET time_in_prog=? WHERE login=?";
+    private static final String SELECT_TIME_USERS_TABLE = "SELECT " + USERS_TIME + " FROM " + USER_TABLE + " WHERE login=?";
 
     private DBHandler(){
     }
@@ -150,5 +160,31 @@ public class DBHandler extends Config{
         PreparedStatement preparedStatement = getDbConnection().prepareStatement(SELECT_CUSTOMERS);
         resultSet = preparedStatement.executeQuery();
         return resultSet;
+    }
+
+    public void signUpCustomer(Customer customer) throws SQLException, ClassNotFoundException {
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(INSERT_INTO_CUSTOMERS_TABLE);
+        preparedStatement.setString(1, customer.getName());
+        preparedStatement.setString(2, customer.getSurname());
+        preparedStatement.setString(3, customer.getAddress());
+        preparedStatement.setString(4, customer.getPassport());
+        preparedStatement.executeUpdate();
+    }
+
+    public void updateUserTime(User user, int time) throws SQLException, ClassNotFoundException {
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(UPDATE_USERS_TIME);
+//        int resultTime = getUserTime(user, time);
+        preparedStatement.setString(1, String.valueOf(time));
+        preparedStatement.setString(2, String.valueOf(user.getLogin()));
+        preparedStatement.executeUpdate();
+    }
+
+    private int getUserTime(User user, int time) throws SQLException, ClassNotFoundException {
+        ResultSet resultSet;
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(SELECT_TIME_USERS_TABLE);
+        preparedStatement.setString(1, user.getLogin());
+        resultSet = preparedStatement.executeQuery();
+        int tableTime = resultSet.getInt(1);
+        return tableTime + time;
     }
 }

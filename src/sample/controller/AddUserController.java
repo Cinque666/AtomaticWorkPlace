@@ -17,9 +17,7 @@ import sample.bean.User;
 import sample.connection.DBHandler;
 import sample.controller.constants.ControllerConstants;
 import sample.validator.LoginValidator;
-import sample.validator.NameValidator;
-import sample.validator.PasswordValidator;
-import sample.validator.SurnameValidator;
+import sample.validator.NameSurnameValidator;
 
 import java.io.IOException;
 import java.net.URL;
@@ -69,8 +67,8 @@ public class AddUserController {
             String password = this.password.getText().trim();
             String name = this.name.getText().trim();
             String surname = this.surname.getText().trim();
-            if(LoginValidator.INSTANCE.isValid(login) || PasswordValidator.INSTANCE.isValid(password)){
-                if(NameValidator.INSTANCE.isValid(name) || SurnameValidator.INSTANCE.isValid(surname)){
+            if(LoginValidator.INSTANCE.isValid(login)){
+                if(NameSurnameValidator.INSTANCE.isValid(name) && NameSurnameValidator.INSTANCE.isValid(surname)){
                     signUpUser(login, password, name, surname, checkRole());
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -80,13 +78,7 @@ public class AddUserController {
                 }
             } else{
                 errorMessage.setText("Неверный логин!");
-//                errorMessage.setStyle("-fx-text-inner-color: red; -fx-font-size: 16px;");
-//                Alert alert = new Alert(Alert.AlertType.ERROR);
-//                alert.setTitle("ERROR");
-//                alert.setContentText("Неверный логин или пароль");
-//                alert.showAndWait();
             }
-//            System.out.println(LoginValidator.INSTANCE.isValid(login.getText().trim()));
         });
         back.setOnAction(event -> {
             stage.close();
@@ -108,10 +100,6 @@ public class AddUserController {
     public static Stage getStage(){
         return AddUserController.stage;
     }
-
-//    public static void close(){
-//        AddUserController.stage.close();
-//    }
 
     private void signUpUser(String login, String password, String name, String surname, int role){
         if(!DBHandler.INSTANCE.checkLoginExisting(login)) {

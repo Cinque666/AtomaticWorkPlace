@@ -18,12 +18,27 @@ public class User {
     @NotNull
     private int role;
 
+    private int time;
+
+    public User(String name, String surname, String login, String password, int role, int time){
+        this.name = name;
+        this.surname = surname;
+        this.login = login;
+        this.password = password;
+        this.role = role;
+        this.time = time;
+    }
+
     public User(String name, String surname, String login, String password, int role) {
         this.name = name;
         this.surname = surname;
         this.login = login;
         this.password = password;
         this.role = role;
+    }
+
+    public User(String login){
+        this.login = login;
     }
 
     public User() {
@@ -67,5 +82,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getTime(){
+        return time;
+    }
+
+    public void setTime(int time){
+        this.time = time;
     }
 }

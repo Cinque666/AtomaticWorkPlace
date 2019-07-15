@@ -83,10 +83,10 @@ public class EventListController {
         int idEvent, cost;
         String idCustomer, idWorker;
         while(resultSet.next()){
-            idEvent = resultSet.getInt("номер");
-            idWorker = resultSet.getString("работник");
-            idCustomer = resultSet.getString("клиент");
-            cost = resultSet.getInt("cost");
+            idEvent = resultSet.getInt(ControllerConstants.EVENT_VIEW_COLUMN_NUMBER);
+            idWorker = resultSet.getString(ControllerConstants.EVENT_VIEW_COLUMN_WORKER);
+            idCustomer = resultSet.getString(ControllerConstants.EVENT_VIEW_COLUMN_CUSTOMER);
+            cost = resultSet.getInt(ControllerConstants.EVENT_VIEW_COLUMN_COST);
             eventsData.add(new EventView(idEvent, idWorker, idCustomer, cost));
         }
         eventTable.setItems(eventsData);

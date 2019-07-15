@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.AddCustomerController">
+    <children>
+        <AnchorPane fx:id="addUserAnchor" layoutX="-4.0" layoutY="150.0" prefHeight="250.0" prefWidth="704.0" style="-fx-background-color: #f0f0f0;">
+            <children>
+                <Button id="authorizationButton" fx:id="signUpButton" layoutX="272.0" layoutY="187.0" mnemonicParsing="false" style="-fx-background-color: silver;" styleClass="authorizationButton" stylesheets="@../styles/login.css" text="Зарегистрировать">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <TextField fx:id="name" alignment="CENTER" layoutX="114.0" layoutY="61.0" prefHeight="26.0" prefWidth="190.0" promptText="Имя" />
+                <TextField fx:id="surname" alignment="CENTER" layoutX="114.0" layoutY="98.0" prefHeight="26.0" prefWidth="190.0" promptText="Фамилия" />
+                <TextField fx:id="address" alignment="CENTER" layoutX="366.0" layoutY="61.0" prefHeight="26.0" prefWidth="190.0" promptText="Адрес" />
+                <TextField fx:id="passport" alignment="CENTER" layoutX="366.0" layoutY="99.0" prefHeight="26.0" prefWidth="190.0" promptText="Пасспорт" />
+                <Text fx:id="errorMessage" fill="#ff0000" layoutX="218.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="120.0" textAlignment="CENTER" wrappingWidth="251.99997299909592">
+                    <font>
+                        <Font size="19.0" />
+                    </font></Text>
+            </children>
+        </AnchorPane>
+        <Label layoutX="14.0" layoutY="12.0" prefHeight="50.0" prefWidth="88.0" text="АРМ" textFill="#f5f5f5">
+            <font>
+                <Font name="Times New Roman" size="38.0" />
+            </font>
+        </Label>
+        <Label layoutX="210.0" layoutY="75.0" prefHeight="34.0" prefWidth="275.0" text="Регистрация нового клиента" textFill="#fdfcfc">
+            <font>
+                <Font name="Times New Roman" size="22.0" />
+            </font>
+        </Label>
+        <Button fx:id="back" layoutX="614.0" layoutY="49.0" mnemonicParsing="false" text="Назад" />
+    </children>
+</AnchorPane>
